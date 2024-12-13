@@ -6,10 +6,14 @@
 class PhoneBook
 {
 private:
-	Contact	contact[9];
+	Contact	contact[8];
+	int	act_pos;
 
 public:
+	PhoneBook();
+	~PhoneBook();
 
+	void	add_to_book();
 };
 
 #endif
