@@ -1,10 +1,10 @@
-NAME = megaphone
+NAME = phonebook
 
-SRC = megaphone.cpp
+SRC = main.cpp src/Contact.cpp src/PhoneBook.cpp
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 OBJ = $(SRC:.cpp=.o)
 
