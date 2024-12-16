@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
 #include "incl/PhoneBook.hpp"
-#include "incl/Contact.hpp"
 
 int	main(void)
 {
 	std::string	buffer;
-	Contact	contact;
+	PhoneBook	phonebook;
 
 	while (true)
 	{
@@ -16,12 +15,12 @@ int	main(void)
 		if (!buffer.compare("ADD"))
 		{
 			std::cout << "Add command detected" << std::endl;
-			contact.add_contact(&contact);
+			phonebook.add_to_book(phonebook);
 		}
 		else if (!buffer.compare("SEARCH"))
 		{
 			std::cout << "Search command detected" << std::endl;
-			contact.show_contact();
+			phonebook.show_all_contacts(phonebook);
 		}
 		else if (!buffer.compare("EXIT"))
 		{
@@ -30,10 +29,7 @@ int	main(void)
 		}
 		else
 		{
-			std::cout << buffer << std::endl;
-			buffer.resize(9);
-			buffer.resize(10, '.');
-			std::cout << "Shortened: " << buffer << std::endl;
+			std::cout << buffer << ": invalid command" << std::endl;
 		}
 	}
 }
