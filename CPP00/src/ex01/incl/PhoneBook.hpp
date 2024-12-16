@@ -13,7 +13,9 @@ public:
 	PhoneBook();
 	~PhoneBook();
 
-	void	add_to_book();
+	void	add_to_book(PhoneBook book);
+	void	show_all_contacts(PhoneBook book);
+	int		get_position(PhoneBook book);
 };
 
 #endif

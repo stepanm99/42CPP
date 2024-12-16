@@ -1,7 +1,5 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
-
-#include <iostream>
 #include <string>
 
 class Contact
@@ -18,7 +16,7 @@ public:
 
 	int		add_contact(Contact *contact);
 	void	show_contact() const;
-	void	list_contact(int pos) const;
+	void	list_contact() const;
 };
 
 #endif

@@ -1,4 +1,5 @@
 #include "../incl/Contact.hpp"
+#include<iostream>
 
 Contact::Contact()
 {
@@ -6,6 +7,18 @@ Contact::Contact()
 
 Contact::~Contact()
 {
+}
+
+std::string string_normalizer(std::string str)
+{
+	if (str.size() > 10)
+	{
+		str.resize(9);
+		str.resize(10, '.');
+	}
+	else
+		str.resize(10, ' ');
+	return (str);
 }
 
 int Contact::add_contact(Contact* contact)
@@ -40,6 +53,15 @@ int Contact::add_contact(Contact* contact)
 	std::cout << std::endl;
 	return (0);
 }
+
+void Contact::list_contact() const
+{
+	std::cout << "|" << string_normalizer(name);
+	std::cout << "|" << string_normalizer(surname);
+	std::cout << "|" << string_normalizer(nick) << "|" << std::endl;
+
+}
+
 
 void Contact::show_contact() const
 {
