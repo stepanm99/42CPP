@@ -1,5 +1,6 @@
 #include "../incl/Contact.hpp"
 #include<iostream>
+#include <string>
 
 Contact::Contact()
 {
@@ -9,43 +10,58 @@ Contact::~Contact()
 {
 }
 
-std::string string_normalizer(std::string str)
+static std::string string_normalizer(std::string str)
 {
-	if (str.size() > 10)
+	std::string	ret;
+	int	len;
+	int	spaces;
+
+	len = str.size();
+	spaces = 0;
+	if (len > 10)
 	{
 		str.resize(9);
 		str.resize(10, '.');
+		return (str);
 	}
 	else
-		str.resize(10, ' ');
-	return (str);
+	{
+		spaces = 10 - len;
+		while (spaces)
+		{
+			ret.append(" ");
+			spaces--;
+		}
+		ret.append(str);
+		return (ret);
+	}
 }
 
 int Contact::add_contact(Contact* contact)
 {
 	std::string buffer;
 
-	std::cout << "Name: ";
+	std::cout << "Name:         ";
 	if (!std::getline(std::cin, buffer))
 		return (-1);
 	contact->name = buffer;
 
-	std::cout << std::endl << "Surname: ";
+	std::cout << "Surname:      ";
 	if (!std::getline(std::cin, buffer))
 		return (-1);
 	contact->surname = buffer;
 
-	std::cout << std::endl << "Nick: ";
+	std::cout << "Nick:         ";
 	if (!std::getline(std::cin, buffer))
 		return (-1);
 	contact->nick = buffer;
 
-	std::cout << std::endl << "Phone number: ";
+	std::cout << "Phone number: ";
 	if (!std::getline(std::cin, buffer))
 		return (-1);
 	contact->phone_number = buffer;
 
-	std::cout << std::endl << "Secret: ";
+	std::cout << "Secret:       ";
 	if (!std::getline(std::cin, buffer))
 		return (-1);
 	contact->secret = buffer;
@@ -65,9 +81,9 @@ void Contact::list_contact() const
 
 void Contact::show_contact() const
 {
-	std::cout << "Name: " << name << std::endl;
-	std::cout << "Surname: " << surname << std::endl;
-	std::cout << "Nick: " << nick << std::endl;
+	std::cout << "Name:         " << name << std::endl;
+	std::cout << "Surname:      " << surname << std::endl;
+	std::cout << "Nick:         " << nick << std::endl;
 	std::cout << "Phone number: " << phone_number << std::endl;
-	std::cout << "Secret: " << secret << std::endl;
+	std::cout << "Secret:       " << secret << std::endl;
 }
