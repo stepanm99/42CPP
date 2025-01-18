@@ -1,6 +1,6 @@
 NAME = sed
 
-SRC = main.cpp
+SRC = main.cpp Sed.cpp
 
 CC = c++
 
