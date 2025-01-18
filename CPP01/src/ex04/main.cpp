@@ -12,6 +12,8 @@ int main(int argc, char **argv)
 	std::string filename = 		argv[1];
 	std::string original = 		argv[2];
 	std::string replacement =	argv[3];
+	std::string input;
+	char		buff_char;
 	std::ifstream f_in(NULL);
 	std::ofstream f_out(NULL);
 
@@ -20,8 +22,10 @@ int main(int argc, char **argv)
 	std::cout << "filename: " << filename << std::endl;
 	std::cout << "original: " << original << std::endl;
 	std::cout << "replacement: " << replacement << std::endl;
+	while(f_in.get(buff_char))
+		input.push_back(buff_char);
 
-	std::cout << f_in << std::endl;
+	std::cout << input << std::endl;
 	f_in.close();
 	return (0);
 }
