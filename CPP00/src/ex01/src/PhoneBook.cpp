@@ -44,7 +44,7 @@ void	PhoneBook::show_all_contacts(PhoneBook book)
 		std::cout << "Invalid input! Only numerical characters allowed (0-8)!" << std::endl;
 		return ;
 	}
-	i = std::stoi(buffer, nullptr, 10);	
+	i = std::stoi(buffer, NULL, 10);
 	if (i == 0)
 		return ;
 	if (i < 0 || i > 8)
