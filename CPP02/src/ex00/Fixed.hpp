@@ -1,6 +1,8 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+#include <iostream>
+
 class Fixed{
 private:
 	int					value;
@@ -8,7 +10,7 @@ private:
 public:
 	Fixed();
 	Fixed(Fixed& original);
-	//copy assingnment overload
+	Fixed &operator=(const Fixed &other);
 	~Fixed();
 	int		getRawBits(void);
 	void	setRawBits(int const raw);
