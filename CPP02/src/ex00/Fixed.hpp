@@ -6,13 +6,13 @@
 class Fixed{
 private:
 	int					value;
-	static const int	fraction = 8;
+	static const int	fraction;
 public:
 	Fixed();
-	Fixed(Fixed& original);
-	Fixed &operator=(const Fixed &other);
+	Fixed(Fixed const &original);
+	Fixed &operator=(Fixed const &original);
 	~Fixed();
-	int		getRawBits(void);
+	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 };
 

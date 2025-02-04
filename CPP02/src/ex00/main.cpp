@@ -3,9 +3,9 @@
 
 int main(void)
 {
-	Fixed a;
-	Fixed b(a);
-	Fixed (c);
+	Fixed a;		//default constructor called
+	Fixed b(a);		//copy constructor called
+	Fixed c;
 
 	c = b;
 
