@@ -36,7 +36,7 @@ Fixed Fixed::operator+(Fixed const &other)
 {
 	Fixed result(*this);
 
-	result.setRawBits(this->getRawBits() + other.getRawBits());
+	result.value = (this->value + other.value);
 	return (result);
 }
 
@@ -44,7 +44,7 @@ Fixed Fixed::operator-(Fixed const &other)
 {
 	Fixed result(*this);
 
-	result.setRawBits(this->getRawBits() - other.getRawBits());
+	result.value = (this->value - other.value);
 	return (result);
 }
 
@@ -54,9 +54,9 @@ Fixed Fixed::operator*(Fixed const &other)
 	long	this_tmp;
 	long	other_tmp;
 
-	this_tmp = (long)this->getRawBits();
-	other_tmp = (long)other.getRawBits();
-	result.setRawBits((this_tmp * other_tmp) / (1 << Fixed::fraction));
+	this_tmp = (long)this->value;
+	other_tmp = (long)other.value;
+	result.value = ((this_tmp * other_tmp) / (1 << Fixed::fraction));
 	return result;
 }
 
@@ -66,9 +66,9 @@ Fixed Fixed::operator/(Fixed const &other)
 	long	this_tmp;
 	long	other_tmp;
 
-	this_tmp = (long)this->getRawBits();
-	other_tmp = (long)other.getRawBits();
-	result.setRawBits((this_tmp * (1 << Fixed::fraction)) / other_tmp);
+	this_tmp = (long)this->value;
+	other_tmp = (long)other.value;
+	result.value = ((this_tmp * (1 << Fixed::fraction)) / other_tmp);
 	return result;
 }
 
