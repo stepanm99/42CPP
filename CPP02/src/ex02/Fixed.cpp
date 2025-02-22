@@ -79,7 +79,7 @@ Fixed Fixed::operator++(int)
 {
 	Fixed temp(*this);
 
-	this->setRawBits(this->getRawBits() + 1);
+	this->value++;
 	return temp;
 }
 
@@ -88,7 +88,7 @@ Fixed Fixed::operator++(int)
  */
 Fixed Fixed::operator++()
 {
-	this->setRawBits(this->getRawBits() + 1);
+	this->value++;
 	return *this;
 }
 
@@ -99,7 +99,7 @@ Fixed Fixed::operator--(int)
 {
 	Fixed temp(*this);
 
-	this->setRawBits(this->getRawBits() - 1);
+	this->value--;
 	return temp;
 }
 
@@ -108,7 +108,7 @@ Fixed Fixed::operator--(int)
  */
 Fixed Fixed::operator--()
 {
-	this->setRawBits(this->getRawBits() - 1);
+	this->value--;
 	return *this;
 }
 
