@@ -2,37 +2,37 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 }
 
 Fixed::Fixed(const Fixed &original)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	this->value = original.getRawBits();
 }
 
 Fixed::Fixed(const int number)
 {
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 	this->value = (number << Fixed::fraction);
 }
 
 
 Fixed::Fixed(const float number)
 {
-	std::cout << "Float constructor called " << this->fraction << std::endl;
+	// std::cout << "Float constructor called " << this->fraction << std::endl;
 	this->value = number * (float)(1 << Fixed::fraction);
 }
 
 Fixed& Fixed::operator=(Fixed const &original)
 {
-	std::cout << "Coppy assignment operator called" << std::endl;
+	// std::cout << "Coppy assignment operator called" << std::endl;
 	this->value = original.getRawBits();
 	return *this;
 }
 
-Fixed& Fixed::operator+(Fixed const &other)
+Fixed Fixed::operator+(Fixed const &other)
 {
 	Fixed result(*this);
 
@@ -40,7 +40,7 @@ Fixed& Fixed::operator+(Fixed const &other)
 	return (result);
 }
 
-Fixed& Fixed::operator-(Fixed const &other)
+Fixed Fixed::operator-(Fixed const &other)
 {
 	Fixed result(*this);
 
@@ -48,49 +48,68 @@ Fixed& Fixed::operator-(Fixed const &other)
 	return (result);
 }
 
-Fixed& Fixed::operator*(Fixed const &other)
+Fixed Fixed::operator*(Fixed const &other)
 {
+	Fixed	result(*this);
+	long	this_tmp;
+	long	other_tmp;
 
+	this_tmp = (long)this->getRawBits();
+	other_tmp = (long)other.getRawBits();
+	result.setRawBits((this_tmp * other_tmp) / (1 << Fixed::fraction));
+	return result;
 }
 
-Fixed& Fixed::operator/(Fixed const &other)
+Fixed Fixed::operator/(Fixed const &other)
 {
+	Fixed	result(*this);
+	long	this_tmp;
+	long	other_tmp;
 
+	this_tmp = (long)this->getRawBits();
+	other_tmp = (long)other.getRawBits();
+	result.setRawBits((this_tmp * (1 << Fixed::fraction)) / other_tmp);
+	return result;
 }
 
 /**
  * Postfix increment
  */
-Fixed& Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
 	Fixed temp(*this);
 
 	this->setRawBits(this->getRawBits() + 1);
-	return (temp);
+	return temp;
 }
 
 /**
  * Prefix increment
  */
-Fixed& Fixed::operator++()
+Fixed Fixed::operator++()
 {
-
+	this->setRawBits(this->getRawBits() + 1);
+	return *this;
 }
 
 /**
  * Postfix decrement
  */
-Fixed& Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
+	Fixed temp(*this);
 
+	this->setRawBits(this->getRawBits() - 1);
+	return temp;
 }
 
 /**
  * Prefix decrement
  */
-Fixed& Fixed::operator--()
+Fixed Fixed::operator--()
 {
-
+	this->setRawBits(this->getRawBits() - 1);
+	return *this;
 }
 
 bool Fixed::operator==(Fixed const &other) const
@@ -125,25 +144,57 @@ bool Fixed::operator<=(Fixed const &other) const
 
 std::ostream &operator<<(std::ostream &out, Fixed const &number)
 {
-	std::cout << "<< operator overload called" << std::endl;
+	// std::cout << "<< operator overload called" << std::endl;
 	out << number.toFloat();
 	return (out);
 }
 
+Fixed const &min(Fixed const &a, Fixed const &b)
+{
+	if (a <= b)
+		return a;
+	else
+		return b;
+}
+
+Fixed &min(Fixed &a, Fixed &b)
+{
+	if (a <= b)
+		return a;
+	else
+		return b;
+}
+
+Fixed const &max(Fixed const &a, Fixed const &b)
+{
+	if (a >= b)
+		return a;
+	else
+		return b;
+}
+
+Fixed &max(Fixed &a, Fixed &b)
+{
+	if (a >=b)
+		return a;
+	else
+		return b;
+}
+
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return this->value;
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	// std::cout << "setRawBits member function called" << std::endl;
 	this->value = raw << Fixed::fraction;
 }
 

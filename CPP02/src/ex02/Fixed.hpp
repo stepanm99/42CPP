@@ -24,15 +24,18 @@ public:
 	bool operator<=(Fixed const &other) const;
 
 	//arithmetic operators overload
-	Fixed &operator+(Fixed const &other);
-	Fixed &operator-(Fixed const &other);
-	Fixed &operator*(Fixed const &other);
-	Fixed &operator/(Fixed const &other);
-	Fixed &operator++(int);	//post increment
-	Fixed &operator++();
-	Fixed &operator--(int);	//post decrement
-	Fixed &operator--();
+	Fixed operator+(Fixed const &other);
+	Fixed operator-(Fixed const &other);
+	Fixed operator*(Fixed const &other);
+	Fixed operator/(Fixed const &other);
+	Fixed operator++(int);	//post increment
+	Fixed operator++();
+	Fixed operator--(int);	//post decrement
+	Fixed operator--();
 
+	/**
+	 * Public functions
+	 */
 	int		getRawBits(void) const;
 	float	toFloat(void) const;
 	int		toInt(void) const;
@@ -40,5 +43,9 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &out, Fixed const &number);
+Fixed const &min(Fixed const &a, Fixed const &b);
+Fixed &min(Fixed &a, Fixed &b);
+Fixed const &max(Fixed const &a, Fixed const &b);
+Fixed &max(Fixed &a, Fixed &b);
 
 #endif
