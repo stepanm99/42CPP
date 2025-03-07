@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
@@ -34,6 +35,20 @@ int main(void)
 	st.beRepaired(20);
 	st.stats();
 	st.guardGate();
+	//*/
+
+	//* FragTrap tests
+	std::cout << "\n\nFragTrap tests" << std::endl;
+	FragTrap	ft("Mike");
+
+	ft.stats();
+	ft.attack(enemy);
+	while (i++ < 30)
+		ft.takeDamage(3);
+	ft.stats();
+	ft.beRepaired(20);
+	ft.stats();
+	ft.highFiveGuys();
 	//*/
 
 	std::cout << "\n\nend of tests" << std::endl;
