@@ -15,7 +15,7 @@ $(NAME): $(OBJ)
 	@$(CC) $(OBJ) $(FLAGS) -o $(NAME)
 	@echo "Done!"
 
-%.o: %.c
+%.o: %.cpp
 	@echo "Compiling $<"
 	@$(CC) $(FLAGS) -c $< -o $@
 

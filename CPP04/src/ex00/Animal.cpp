@@ -12,5 +12,4 @@ Animal::~Animal()
 
 void Animal::makeSound()
 {
-	
 }
