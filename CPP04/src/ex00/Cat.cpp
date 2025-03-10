@@ -8,4 +8,10 @@ Cat::Cat()
 
 Cat::~Cat()
 {
+	std::cout << "Cat is decomposed" << std::endl;
+}
+
+void Cat::makeSound() const
+{
+	std::cout << this->type << ": meows" << std::endl;
 }

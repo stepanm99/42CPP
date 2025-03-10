@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = zoo
 
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp
 

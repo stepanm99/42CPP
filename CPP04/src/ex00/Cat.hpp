@@ -5,11 +5,10 @@
 
 class Cat: public Animal
 {
-private:
-
 public:
 	Cat();
 	~Cat();
+	void makeSound(void) const;
 };
 
 #endif
