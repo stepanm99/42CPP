@@ -4,7 +4,6 @@
 PhoneBook::PhoneBook()
 {
 	this->act_pos = 0;
-	std::cout << "Default constructor called" << std::endl;
 }
 
 PhoneBook::~PhoneBook()

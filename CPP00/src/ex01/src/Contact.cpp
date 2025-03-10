@@ -4,7 +4,6 @@
 
 Contact::Contact()
 {
-	std::cout << "Contact default constructor called" << std::endl;
 }
 
 Contact::~Contact()
