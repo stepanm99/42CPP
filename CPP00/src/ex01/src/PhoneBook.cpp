@@ -1,5 +1,6 @@
 #include "../incl/PhoneBook.hpp"
 #include <iostream>
+#include <cstdlib>
 
 PhoneBook::PhoneBook()
 {
@@ -10,16 +11,16 @@ PhoneBook::~PhoneBook()
 {
 }
 
-void	PhoneBook::add_to_book(PhoneBook book)
+void	PhoneBook::add_to_book(void)
 {
-	book.contact->add_contact(&this->contact[this->act_pos]);
+	this->contact->add_contact(&this->contact[this->act_pos]);
 	if (this->act_pos < 7)
 		this->act_pos++;
 	else
 		this->act_pos = 0;
 }
 
-void	PhoneBook::show_all_contacts(PhoneBook book)
+void	PhoneBook::show_all_contacts(void)
 {
 	int			i;
 	std::string	buffer;
@@ -41,6 +42,11 @@ void	PhoneBook::show_all_contacts(PhoneBook book)
 	std::getline(std::cin, buffer);
 	if (buffer.find_first_not_of("0123456789") != std::string::npos || buffer.empty())
 	{
+		if (std::cin.eof() || std::cin.bad() || std::cin.fail())
+		{
+			std::cout << "Input error, exiting" << std::endl;
+			return ;
+		}
 		std::cout << "Invalid input! Only numerical characters allowed (0-8)!" << std::endl;
 		return ;
 	}

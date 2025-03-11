@@ -13,9 +13,9 @@ public:
 	PhoneBook();
 	~PhoneBook();
 
-	void	add_to_book(PhoneBook book);
-	void	show_all_contacts(PhoneBook book);
-	int		get_position(PhoneBook book);
+	void	add_to_book(void);
+	void	show_all_contacts(void);
+	// int		get_position(void);
 };
 
 #endif

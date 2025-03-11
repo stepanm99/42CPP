@@ -21,10 +21,12 @@ int	main(void)
 	{
 		std::cout << "> ";
 		std::getline(std::cin, buffer);
+		if (std::cin.eof() || std::cin.bad() || std::cin.fail())
+			break;
 		if (!buffer.compare("ADD"))
-			phonebook.add_to_book(phonebook);
+			phonebook.add_to_book();
 		else if (!buffer.compare("SEARCH"))
-			phonebook.show_all_contacts(phonebook);
+			phonebook.show_all_contacts();
 		else if (!buffer.compare("EXIT"))
 			break;
 		else
