@@ -12,13 +12,15 @@ Sed::Sed(std::string inf, std::string ori, std::string re)
 }
 
 Sed::~Sed()
-{}
+{
+}
 
 void Sed::sed_replace(std::string inf, std::string ori, std::string re)
 {
 	in_filename = inf;
 	original = ori;
 	replacement = re;
+	i = 1;
 	this->sed_replace();
 }
 
@@ -28,18 +30,18 @@ void	Sed::sed_replace()
 	out_filename = in_filename;
 	out_filename.append(".replace");
 
-	f_in.open(in_filename, std::ios::in);
+	f_in.open(in_filename.c_str(), std::ios::in);
 	if (!f_in.is_open())
 	{
 		std::cout << "Error while opening: " << in_filename << std::endl;
 		std::cout << "Does the file exist?" << std::endl;
 		return ;
 	}
-	f_out.open(out_filename, std::ios::out);
+	f_out.open(out_filename.c_str(), std::ios::out);
 
 	while(f_in.get(buff_char))
 	{
-		if (buff_char == original.front())
+		if (buff_char == original[0])
 		{
 			buff.push_back(buff_char);
 			while (i < original.size() && f_in.get(buff_char))

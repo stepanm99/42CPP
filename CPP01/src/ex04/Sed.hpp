@@ -13,7 +13,7 @@ private:
 	std::ifstream	f_in;
 	std::ofstream	f_out;
 	char			buff_char;
-	int				i = 1;
+	unsigned long	i;//int				i = 1;
 public:
 	Sed();
 	Sed(std::string inf, std::string ori, std::string re);
