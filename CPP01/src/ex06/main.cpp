@@ -4,7 +4,6 @@ int	main(int argc, char **argv)
 {
 	Harl 		Harl;
 	std::string	level;
-	int			i = 0;
 
 	if (argc != 2)
 	{
