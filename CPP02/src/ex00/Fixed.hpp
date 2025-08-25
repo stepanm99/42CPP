@@ -3,15 +3,17 @@
 
 #include <iostream>
 
+#define PRINT 1;
+
 class Fixed{
 private:
 	int					value;
 	static const int	fraction;
 public:
-	Fixed();
-	Fixed(Fixed const &original);
-	Fixed &operator=(Fixed const &original);
-	~Fixed();
+	Fixed();								//constructor
+	~Fixed();								//destructor
+	Fixed(Fixed const &original);			//copy constructor
+	Fixed &operator=(Fixed const &original);//copy assignment
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 };

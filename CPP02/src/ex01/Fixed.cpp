@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed()
 {
@@ -21,8 +22,8 @@ Fixed::Fixed(const int number)
 
 Fixed::Fixed(const float number)
 {
-	std::cout << "Float constructor called " << this->fraction << std::endl;
-	this->value = number * (float)(1 << Fixed::fraction);
+	std::cout << "Float constructor called " << std::endl;
+	this->value = (int)(number * (1 << Fixed::fraction));
 }
 
 Fixed& Fixed::operator=(Fixed const &original)
@@ -34,7 +35,7 @@ Fixed& Fixed::operator=(Fixed const &original)
 
 std::ostream &operator<<(std::ostream &out, Fixed const &number)
 {
-	std::cout << "<< operator overload called" << std::endl;
+	// std::cout << "<< operator overload called" << std::endl;
 	out << number.toFloat();
 	return (out);
 }
@@ -46,13 +47,13 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return this->value;
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	// std::cout << "setRawBits member function called" << std::endl;
 	this->value = raw << Fixed::fraction;
 }
 
