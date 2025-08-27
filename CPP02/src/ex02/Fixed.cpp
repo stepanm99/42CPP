@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed()
 {
@@ -22,7 +23,7 @@ Fixed::Fixed(const int number)
 Fixed::Fixed(const float number)
 {
 	// std::cout << "Float constructor called " << this->fraction << std::endl;
-	this->value = number * (float)(1 << Fixed::fraction);
+	this->value = roundf(number * (float)(1 << Fixed::fraction));
 }
 
 Fixed& Fixed::operator=(Fixed const &original)

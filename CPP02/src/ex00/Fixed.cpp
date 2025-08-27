@@ -27,13 +27,11 @@ Fixed::~Fixed()
 int Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return this->value >> Fixed::fraction;
+	return this->value;
 }
 
 void Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
-	this->value = raw << Fixed::fraction;
+	this->value = raw;
 }
-
-const int Fixed::fraction = 8;
