@@ -25,6 +25,8 @@ int main(void)
 	//* ScavTrap tests
 	std::cout << "\n\nScavTrap tests" << std::endl;
 	ScavTrap	st("John");
+	ScavTrap	st1("Julie");
+	ScavTrap	st2("Fern");
 
 	st.stats();
 	st.attack(enemy);

@@ -9,12 +9,32 @@ ClapTrap::ClapTrap(std::string name)
 	this->attackDamage = 0;
 }
 
+ClapTrap::ClapTrap()
+{
+}
+
+ClapTrap::ClapTrap(ClapTrap const &original)
+{
+	this->name = original.name;
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+}
+
+ClapTrap& ClapTrap::operator=(ClapTrap const &original)
+{
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+	return (*this);
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap with name " << this->name << " destructed" << std::endl;
 }
 
-void ClapTrap::attack(std::string &target)
+void ClapTrap::attack(const std::string &target)
 {
 	if (!this->energyPoints || !this->hitPoints)
 	{

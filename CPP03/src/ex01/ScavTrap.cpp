@@ -1,4 +1,6 @@
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
+#include <cstring>
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
@@ -6,6 +8,24 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackDamage = 20;
+}
+
+ScavTrap::ScavTrap(ScavTrap const &original)
+{
+	this->name = original.name;
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+}
+
+ScavTrap& ScavTrap::operator=(ScavTrap const &original)
+{
+	if (this->name.length() == 0)
+		this->name = original.name;
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()
