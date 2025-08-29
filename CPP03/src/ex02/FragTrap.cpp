@@ -1,4 +1,5 @@
 #include "FragTrap.hpp"
+#include <iostream>
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {

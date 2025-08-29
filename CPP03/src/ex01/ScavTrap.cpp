@@ -1,5 +1,6 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
+#include <iostream>
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
@@ -18,6 +19,7 @@ ScavTrap::ScavTrap(ScavTrap const &original)
 	this->hitPoints = original.hitPoints;
 	this->energyPoints = original.energyPoints;
 	this->attackDamage = original.attackDamage;
+	std::cout << "ScavTrap named " << this->name << " copy constructed" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(ScavTrap const &original)

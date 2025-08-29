@@ -1,5 +1,42 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include <iostream>
+#include <ostream>
+
+int clapTrapTests(void)
+{
+	std::cout << "Instantiating ClapTraps\n" << std::endl;
+	ClapTrap	ct("Boris");
+	ClapTrap	ct1("Ben");
+	std::cout << "\nInstantiating ClapTrap using copy constructor" << std::endl;
+	ClapTrap	ct2(ct1);
+	std::string	enemy = "Enemy";
+	int			i = 0;
+
+	std::cout << "\ntesting ClapTrap class functions" << std::endl;
+	ct.stats();
+	ct.attack(enemy);
+	ct.stats();
+	std::cout << "\n incremental damage for Boris until obliteration" << std::endl;
+	while (i++ < 10)
+		ct.takeDamage(1);
+	ct.takeDamage(1);
+	ct.stats();
+	ct.beRepaired(1);
+	ct.stats();
+	ct2.stats();
+	ct2.takeDamage(7);
+	ct2.stats();
+	ct1.stats();
+	std::cout << "\ntesting copy assignment, Ben_copy took 7 damage and that is copy assigned to Ben" << std::endl;
+	ct1 = ct2;
+	ct1.stats();
+	std::cout << "\nrepairing Ben by 5 points" << std::endl;
+	ct1.beRepaired(5);
+	ct1.stats();
+	std::cout << "End of ClapTrap test\n\n" << std::endl;
+	return 0;
+}
 
 int main(void)
 {
@@ -7,34 +44,23 @@ int main(void)
 	std::string	enemy = "Enemy";
 	int			i = 0;
 
-	//* ClapTrap tests
-	std::cout << "\n\nBasic claptrap tests" << std::endl;
-	ClapTrap	ct("Boris");
-	ct.stats();
-	ct.attack(enemy);
-	ct.stats();
-	while (i++ < 10)
-		ct.takeDamage(1);
-	ct.takeDamage(1);
-	ct.stats();
-	ct.beRepaired(1);
-	ct.stats();
-	i = 0;
-	//*/
-
-	//* ScavTrap tests
+	clapTrapTests();
 	std::cout << "\n\nScavTrap tests" << std::endl;
 	ScavTrap	st("John");
 	ScavTrap	st1("Julie");
+	std::cout << "\ncopy constructing from ST named Julie" << std::endl;
 	ScavTrap	st2(st1);
 
 	st.stats();
 	st.attack(enemy);
+	std::cout << "\nincrementally damaging ST until it dies" << std::endl;
 	while (i++ < 30)
 		st.takeDamage(3);
 	st.stats();
+	std::cout << "\ntrying to repair John" << std::endl;
 	st.beRepaired(20);
 	st.stats();
+	std::cout << "\ntelling John to guard gate" << std::endl;
 	st.guardGate();
 	st1.stats();
 	st2.stats();
@@ -42,8 +68,6 @@ int main(void)
 	st2.stats();
 	st1 = st2;
 	st1.stats();
-	//*/
-
-	std::cout << "\n\nend of tests" << std::endl;
+	std::cout << "\n\nend of tests :c" << std::endl;
 	return 0;
 }

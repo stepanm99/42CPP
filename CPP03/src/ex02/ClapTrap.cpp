@@ -1,4 +1,5 @@
 #include "ClapTrap.hpp"
+#include <iostream>
 
 ClapTrap::ClapTrap(std::string name)
 {
@@ -11,6 +12,26 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap()
 {
+}
+
+ClapTrap::ClapTrap(ClapTrap const &original)
+{
+	std::string copy_name = original.name;
+
+	copy_name.append("_copy");
+	this->name = copy_name;
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+	std::cout << "ClapTrap with name |" << name << "| copy constructed" << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(ClapTrap const &original)
+{
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+	return (*this);
 }
 
 ClapTrap::~ClapTrap()
