@@ -26,7 +26,7 @@ int main(void)
 	std::cout << "\n\nScavTrap tests" << std::endl;
 	ScavTrap	st("John");
 	ScavTrap	st1("Julie");
-	ScavTrap	st2("Fern");
+	ScavTrap	st2(st1);
 
 	st.stats();
 	st.attack(enemy);
@@ -36,6 +36,12 @@ int main(void)
 	st.beRepaired(20);
 	st.stats();
 	st.guardGate();
+	st1.stats();
+	st2.stats();
+	st2.takeDamage(7);
+	st2.stats();
+	st1 = st2;
+	st1.stats();
 	//*/
 
 	std::cout << "\n\nend of tests" << std::endl;

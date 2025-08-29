@@ -40,6 +40,8 @@ int main(void)
 	//* FragTrap tests
 	std::cout << "\n\nFragTrap tests" << std::endl;
 	FragTrap	ft("Mike");
+	FragTrap	ft1("Pence");
+	FragTrap	ft2(ft1);
 
 	ft.stats();
 	ft.attack(enemy);
@@ -49,6 +51,13 @@ int main(void)
 	ft.beRepaired(20);
 	ft.stats();
 	ft.highFiveGuys();
+
+	ft1.stats();
+	ft1.takeDamage(7);
+	ft1.stats();
+	ft2.stats();
+	ft2 = ft1;
+	ft2.stats();
 	//*/
 
 	std::cout << "\n\nend of tests" << std::endl;

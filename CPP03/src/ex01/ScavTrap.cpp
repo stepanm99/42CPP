@@ -1,6 +1,5 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
-#include <cstring>
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
@@ -12,7 +11,10 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 
 ScavTrap::ScavTrap(ScavTrap const &original)
 {
-	this->name = original.name;
+	std::string copy_name = original.name;
+
+	copy_name.append("_copy");
+	this->name = copy_name;
 	this->hitPoints = original.hitPoints;
 	this->energyPoints = original.energyPoints;
 	this->attackDamage = original.attackDamage;
@@ -36,7 +38,7 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->name << " is guarding th gate now!" << std::endl;
+	std::cout << "ScavTrap " << this->name << " is guarding the gate now!" << std::endl;
 }
 
 void ScavTrap::attack(std::string target)

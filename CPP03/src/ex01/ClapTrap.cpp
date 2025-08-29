@@ -15,7 +15,10 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(ClapTrap const &original)
 {
-	this->name = original.name;
+	std::string copy_name = original.name;
+
+	copy_name.append("_copy");
+	this->name = copy_name;
 	this->hitPoints = original.hitPoints;
 	this->energyPoints = original.energyPoints;
 	this->attackDamage = original.attackDamage;

@@ -8,6 +8,28 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 	this->attackDamage = 30;
 }
 
+FragTrap::FragTrap(FragTrap const &original)
+{
+	std::string copy_name = original.name;
+
+	copy_name.append("_copy");
+	this->name = copy_name;
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+	std::cout << "FragTrap named " << this->name << " copy constructed" << std::endl;
+}
+
+FragTrap& FragTrap::operator=(FragTrap const &original)
+{
+	if (this->name.length() == 0)
+		this->name = original.name;
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+	return (*this);
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap " << this->name << " is destroyed..." << std::endl;
