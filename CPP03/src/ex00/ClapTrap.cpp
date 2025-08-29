@@ -8,6 +8,19 @@ ClapTrap::ClapTrap(std::string name)
 	this->energyPoints = 10;
 	this->attackDamage = 0;
 }
+ClapTrap::ClapTrap(ClapTrap const &original)
+{
+	this->name = original.name;
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+}
+ClapTrap& ClapTrap::operator=(ClapTrap const &original)
+{
+	this->hitPoints = original.hitPoints;
+	this->energyPoints = original.energyPoints;
+	this->attackDamage = original.attackDamage;
+}
 
 ClapTrap::~ClapTrap()
 {
