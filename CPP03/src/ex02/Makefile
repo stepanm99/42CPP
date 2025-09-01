@@ -4,7 +4,7 @@ SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -g -std=c++98
+FLAGS = -Wall -Wextra -Werror -g -std=c++98 --pedantic
 
 OBJ = $(SRC:.cpp=.o)
 

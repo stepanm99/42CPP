@@ -11,6 +11,7 @@ private:
 	int			energyPoints;
 	int			attackDamage;
 public:
+	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(ClapTrap const &original);
 	ClapTrap &operator=(ClapTrap const &original);

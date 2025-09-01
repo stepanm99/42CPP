@@ -2,6 +2,15 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
+ScavTrap::ScavTrap(): ClapTrap()
+{
+	std::cout << "Default ScavTrap constructed" << std::endl;
+	this->name = "ScavvieTrappie";
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 20;
+}
+
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
 	std::cout << "ScavTrap named " << this->name << " constructed" << std::endl;

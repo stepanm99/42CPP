@@ -8,6 +8,10 @@ int main(void)
 	ClapTrap	ct1("Ben");
 	std::cout << "\nInstantiating ClapTrap using copy constructor" << std::endl;
 	ClapTrap	ct2(ct1);
+	std::cout << "\nTesting default constructor" << std::endl;
+	ClapTrap	deftrap;
+	deftrap.stats();
+
 	std::string	enemy = "Enemy";
 	int			i = 0;
 

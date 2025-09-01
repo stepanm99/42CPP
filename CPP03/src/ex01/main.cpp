@@ -10,6 +10,10 @@ int clapTrapTests(void)
 	ClapTrap	ct1("Ben");
 	std::cout << "\nInstantiating ClapTrap using copy constructor" << std::endl;
 	ClapTrap	ct2(ct1);
+	std::cout << "\nTesting default constructor" << std::endl;
+	ClapTrap	deftrap;
+	deftrap.stats();
+
 	std::string	enemy = "Enemy";
 	int			i = 0;
 
@@ -34,7 +38,6 @@ int clapTrapTests(void)
 	std::cout << "\nrepairing Ben by 5 points" << std::endl;
 	ct1.beRepaired(5);
 	ct1.stats();
-	std::cout << "End of ClapTrap test\n\n" << std::endl;
 	return 0;
 }
 
@@ -50,6 +53,9 @@ int main(void)
 	ScavTrap	st1("Julie");
 	std::cout << "\ncopy constructing from ST named Julie" << std::endl;
 	ScavTrap	st2(st1);
+	std::cout << "\nTesting default constructor" << std::endl;
+	ScavTrap	deftrap;
+	deftrap.stats();
 
 	st.stats();
 	st.attack(enemy);
