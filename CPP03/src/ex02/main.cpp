@@ -114,7 +114,6 @@ int main(void)
 	std::cout << "\ncopy assigning damaged Pence so the Pence_copy is equally damaged" << std::endl;
 	ft2 = ft1;
 	ft2.stats();
-	//*/
 
 	std::cout << "\n\nend of tests" << std::endl;
 	return 0;

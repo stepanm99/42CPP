@@ -2,7 +2,6 @@
 # define WRONGANIMAL_HPP
 
 #include <string>
-#include <iostream>
 
 class WrongAnimal
 {
@@ -11,6 +10,8 @@ protected:
 
 public:
 	WrongAnimal();
+	WrongAnimal(WrongAnimal const &original);
+	WrongAnimal &operator=(WrongAnimal const &original);
 	~WrongAnimal();
 	void makeSound(void);
 	std::string getType(void);

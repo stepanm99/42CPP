@@ -1,4 +1,5 @@
 #include "WrongCat.hpp"
+#include <iostream>
 
 WrongCat::WrongCat()
 {
@@ -6,12 +7,18 @@ WrongCat::WrongCat()
 	this->type = "wrong cat";
 }
 
+WrongCat::WrongCat(WrongCat const &original)
+{
+	this->type = original.type;
+}
+
+WrongCat &WrongCat::operator=(WrongCat const &original)
+{
+	this->type = original.type;
+	return (*this);
+}
+
 WrongCat::~WrongCat()
 {
 	std::cout << "Wrong cat decomposed" << std::endl;
 }
-
-// void WrongCat::makeSound()
-// {
-// 	std::cout << "Wrong cat meows wrongly" << std::endl;
-// }
