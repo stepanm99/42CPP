@@ -18,6 +18,10 @@ int main(void)
 	std::cout << "copymal type: " << copymal.getType() << std::endl;
 	std::cout << "copymal sound: " << std::endl;
 	copymal.makeSound();
+	/*Copy assignment to a stack instantiated object results in
+	"object slicing", meaning that the type of the object inherently
+	stays the same, hence why it still prints the generic animal sound
+	even though we copy assigned from derived class.*/
 	copymal = dog;
 	std::cout << "copymal type: " << copymal.getType() << std::endl;
 	std::cout << "copymal sound: " << std::endl;
@@ -36,8 +40,30 @@ int main(void)
 	const Animal* nanimal = new Animal();
 	const Animal* ncat = new Cat();
 	const Animal* ndog = new Dog();
+	const Animal* ncopymal = new Animal(*ndog);
 	const WrongAnimal* nwanimal = new WrongAnimal();
 	const WrongAnimal* nwcat = new WrongCat();
+
+	std::cout << "ncopymal type: " << ncopymal->getType() << std::endl;
+	std::cout << "ncopymal sound: " << std::endl;
+	ncopymal->makeSound();
+
+	/*Copy assignment to base class pointer leverages polymorphism,
+	meaning that it will use the functions of the derived class
+	we assigned from. That is why makesound now doesn't output
+	the generic animal sound but the specific sound of the derived
+	copy assigned class.*/
+	ncopymal = ncat;
+
+	std::cout << "ncopymal type: " << ncopymal->getType() << std::endl;
+	std::cout << "ncopymal sound: " << std::endl;
+	ncopymal->makeSound();
+
+	ncopymal = ndog;
+
+	std::cout << "ncopymal type: " << ncopymal->getType() << std::endl;
+	std::cout << "ncopymal sound: " << std::endl;
+	ncopymal->makeSound();
 
 	std::cout << "Animal type: " << nanimal->getType() << std::endl;
 	std::cout << "Animal sound: " << std::endl;
