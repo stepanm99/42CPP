@@ -9,11 +9,13 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal::WrongAnimal(WrongAnimal const &original)
 {
+	std::cout << "Wrong animal copy constructor used!" << std::endl;
 	this->type = original.type;
 }
 
 WrongAnimal &WrongAnimal::operator=(WrongAnimal const &original)
 {
+	std::cout << "Wrong animal copy assignment used!" << std::endl;
 	this->type = original.type;
 	return (*this);
 }

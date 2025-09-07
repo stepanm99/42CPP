@@ -9,11 +9,13 @@ WrongCat::WrongCat()
 
 WrongCat::WrongCat(WrongCat const &original)
 {
+	std::cout << "Wrong cat copy constructor used!" << std::endl;
 	this->type = original.type;
 }
 
 WrongCat &WrongCat::operator=(WrongCat const &original)
 {
+	std::cout << "Wrong cat copy assignment used!" << std::endl;
 	this->type = original.type;
 	return (*this);
 }

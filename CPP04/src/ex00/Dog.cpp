@@ -9,11 +9,13 @@ Dog::Dog()
 
 Dog::Dog(Dog const &original)
 {
+	std::cout << "Dog copy constructor used!" << std::endl;
 	this->type = original.type;
 }
 
 Dog &Dog::operator=(Dog const &original)
 {
+	std::cout << "Dog copy assignment used!" << std::endl;
 	this->type = original.type;
 	return (*this);
 }

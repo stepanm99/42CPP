@@ -9,11 +9,13 @@ Cat::Cat()
 
 Cat::Cat(Cat const &original)
 {
+	std::cout << "Cat copy constructor used!" << std::endl;
 	this->type = original.type;
 }
 
 Cat &Cat::operator=(Cat const &original)
 {
+	std::cout << "Cat copy assignment used!" << std::endl;
 	this->type = original.type;
 	return (*this);
 }
