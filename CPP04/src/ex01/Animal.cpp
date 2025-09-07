@@ -4,6 +4,7 @@
 Animal::Animal()
 {
 	this->type = "Generic animal";
+	this->brain = new Brain();
 	std::cout << "Animal is constructed" << std::endl;
 }
 
@@ -25,6 +26,7 @@ Animal &Animal::operator=(Animal const &original)
 
 Animal::~Animal()
 {
+	delete this->brain;
 	std::cout << "Animal is decomposed" << std::endl;
 }
 
