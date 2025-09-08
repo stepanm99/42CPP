@@ -1,10 +1,10 @@
-NAME = megaphone
+NAME = zoo
 
-SRC = megaphone.cpp
+SRC = main.cpp AAnimal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -g -std=c++98 --pedantic
 
 OBJ = $(SRC:.cpp=.o)
 

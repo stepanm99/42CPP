@@ -5,7 +5,7 @@
 #include "Brain.hpp"
 
 # ifndef PRINT
-#  define PRINT 0
+#  define PRINT 1
 # endif
 
 class Animal
