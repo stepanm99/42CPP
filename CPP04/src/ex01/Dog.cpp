@@ -22,6 +22,7 @@ Dog &Dog::operator=(Dog const &original)
 		if (PRINT)
 			std::cout << "Dog copy assignment used!" << std::endl;
 		this->type = original.type;
+		*this->brain = *original.brain;
 	}
 	return (*this);
 }

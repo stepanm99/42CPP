@@ -6,7 +6,7 @@
 #include "WrongCat.hpp"
 #include <iostream>
 
-#define HERD_SIZE 10
+#define HERD_SIZE 6
 
 int animal_tests(void)
 {
@@ -124,7 +124,8 @@ int	main(void)
 	std::cout << "herd[HERD_SIZE - 1]->getIdea(0): " << herd[HERD_SIZE - 1]->getIdea(0) << std::endl;
 	herd[0]->setIdea(0, "Some other idea");
 	std::cout << "herd[0]->getIdea(0): " << herd[0]->getIdea(0) << std::endl;
-	std::cout << "herd[0]->getIdea((BRAIN_CAPACITY + 1)): " << herd[0]->getIdea((BRAIN_CAPACITY + 1)) << std::endl;
+	std::cout << "herd[0]->getIdea(BRAIN_CAPACITY): " << herd[0]->getIdea(BRAIN_CAPACITY) << std::endl;
+	std::cout << "herd[0]->getIdea(BRAIN_CAPACITY - 1): " << herd[0]->getIdea(BRAIN_CAPACITY - 1) << std::endl;
 	i = 0;
 
 	std::cout << "\n----Testing deep copy----\n" << std::endl;
@@ -134,14 +135,29 @@ int	main(void)
 	std::cout << "created cat with address: " << cat << "and idea: " << cat->getIdea(0) << std::endl;
 
 	Cat *cat1 = new Cat(*cat);
+	std::cout << "changing idea 0 of cat to: Changed first idea" << std::endl;
 	cat->setIdea(0, "Changed first idea");
-	std::cout << "copy constructed cat from previous cat with address: " << cat1 << "and idea: " << cat->getIdea(0) << std::endl;
+	std::cout << "copy constructed cat1 from previous cat with address: " << cat1 << "\nand idea: " << cat->getIdea(0) << "which should be different from changed cat idea0: " << cat->getIdea(0) << std::endl;
 	cat1->setIdea(1, "Whole new idea!");
 
 	Cat *cat2 = new Cat();
 	*cat2 = *cat1;
-	std::cout << "copy assigned cat from previous cat with address: " << cat2 << "and idea: " << cat->getIdea(0) << "and also another idea from previous cat: " << cat2->getIdea(1) << std::endl;
+	std::cout << "copy assigned cat from previous cat with address: " << cat2 << "\nand idea: " << cat->getIdea(0) << "\nand also another idea from previous cat: " << cat2->getIdea(1) << std::endl;
 
+	std::cout << "\n\nchecking idea 0 of all 3 cats" << std::endl;
+	std::cout << "cat idea 0: " << cat->getIdea(0) << std::endl;
+	std::cout << "cat1 idea 0: " << cat1->getIdea(0) << std::endl;
+	std::cout << "cat2 idea 0: " << cat2->getIdea(0) << std::endl;
+	std::cout << "changing idea 0 of each cat to \"cat(n) idea\"" << std::endl;
+	cat->setIdea(0, "cat idea");
+	cat1->setIdea(0, "cat1 idea");
+	cat2->setIdea(0, "cat2 idea");
+	std::cout << "\n\nchecking idea 0 of all 3 cats" << std::endl;
+	std::cout << "cat idea 0: " << cat->getIdea(0) << std::endl;
+	std::cout << "cat1 idea 0: " << cat1->getIdea(0) << std::endl;
+	std::cout << "cat2 idea 0: " << cat2->getIdea(0) << std::endl;
+
+	std::cout << "\n----Deleting objects at the end of the program----" << std::endl;
 	delete cat;
 	delete cat1;
 	delete cat2;

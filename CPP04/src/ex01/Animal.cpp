@@ -24,6 +24,7 @@ Animal &Animal::operator=(Animal const &original)
 		if (PRINT)
 			std::cout << "Animal copy assignment used!" << std::endl;
 		this->type = original.type;
+		*this->brain = *original.brain;
 	}
 	return (*this);
 }

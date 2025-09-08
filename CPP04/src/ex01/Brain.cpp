@@ -18,13 +18,13 @@ Brain::Brain(Brain const &original)
 		i++;
 	}
 	if (PRINT)
-		std::cout << "Brain copy constructor used!" << std::endl;
+		std::cout << "Brain copy constructor used!\nthis->ideas address: " << this->ideas << "\noriginal.ideas address: " << std::endl;
 }
 
 Brain &Brain::operator=(Brain const &original)
 {
 	if (PRINT)
-		std::cout << "Brain copy assignemt used!" << std::endl;
+		std::cout << "Brain copy assignemt used!\nthis->ideas address: " << this->ideas << "\noriginal.ideas address: " << original.ideas << std::endl;
 	if (this != &original)
 	{
 		int	i = 0;
@@ -52,6 +52,9 @@ void Brain::setIdea(int n, const std::string new_idea)
 const std::string Brain::getIdea(int n)
 {
 	if (n < BRAIN_CAPACITY && n >= 0)
+	{
+		std::cout << " ideas address: " << this->ideas << " ";
 		return (this->ideas[n]);
+	}
 	return ("Outofrangeous idea...\n");
 }
