@@ -1,9 +1,12 @@
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 #include <iostream>
+
+#define HERD_SIZE 10
 
 int animal_tests(void)
 {
@@ -84,26 +87,67 @@ int animal_tests(void)
 int	main(void)
 {
 	// animal_tests();
-	Animal	*herd[10];
-	int		i = 0;
+	Animal		*herd[HERD_SIZE];
+	int			i = 0;
+	int			j = 0;
+	std::string	test_idea = "test idea";
 
-	while (i < 10)
+	std::cout << "\n----Instantiating herd----\n" << std::endl;
+	while (i < HERD_SIZE)
 	{
-		if (i < 5)
+		std::cout << "Instantiating herd members" << i << std::endl;
+		if (i < (HERD_SIZE / 2))
 		{
 			herd[i] = new Dog();
+			while (j < BRAIN_CAPACITY)
+			{
+				herd[i]->setIdea(j, test_idea);
+				j++;
+			}
+			j = 0;
 		}
 		else
 		{
 			herd[i] = new Cat();
+			while (j < BRAIN_CAPACITY)
+			{
+				herd[i]->setIdea(j, test_idea);
+				j++;
+			}
+			j = 0;
 		}
 		i++;
 	}
 
-
+	std::cout << "\n----Testing ideas----\n" << std::endl;
+	std::cout << "herd[0]->getIdea(0): " << herd[0]->getIdea(0) << std::endl;
+	std::cout << "herd[HERD_SIZE - 1]->getIdea(0): " << herd[HERD_SIZE - 1]->getIdea(0) << std::endl;
+	herd[0]->setIdea(0, "Some other idea");
+	std::cout << "herd[0]->getIdea(0): " << herd[0]->getIdea(0) << std::endl;
+	std::cout << "herd[0]->getIdea((BRAIN_CAPACITY + 1)): " << herd[0]->getIdea((BRAIN_CAPACITY + 1)) << std::endl;
 	i = 0;
-	while (i < 10)
+
+	std::cout << "\n----Testing deep copy----\n" << std::endl;
+
+	Cat *cat = new Cat();
+	cat->setIdea(0, "first idea");
+	std::cout << "created cat with address: " << cat << "and idea: " << cat->getIdea(0) << std::endl;
+
+	Cat *cat1 = new Cat(*cat);
+	cat->setIdea(0, "Changed first idea");
+	std::cout << "copy constructed cat from previous cat with address: " << cat1 << "and idea: " << cat->getIdea(0) << std::endl;
+	cat1->setIdea(1, "Whole new idea!");
+
+	Cat *cat2 = new Cat();
+	*cat2 = *cat1;
+	std::cout << "copy assigned cat from previous cat with address: " << cat2 << "and idea: " << cat->getIdea(0) << "and also another idea from previous cat: " << cat2->getIdea(1) << std::endl;
+
+	delete cat;
+	delete cat1;
+	delete cat2;
+	while (i < HERD_SIZE)
 	{
+		std::cout << "Slaughtering herd member nr: " << i << std::endl;
 		delete herd[i];
 		i++;
 	}

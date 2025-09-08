@@ -11,6 +11,8 @@ public:
 	Dog &operator=(Dog const &original);
 	~Dog();
 	void makeSound(void) const;
+	void	setIdea(int n, const std::string new_idea);
+	const std::string getIdea(int n);
 };
 
 #endif
