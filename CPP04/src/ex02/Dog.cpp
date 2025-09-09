@@ -6,10 +6,13 @@ Dog::Dog()
 	if (PRINT)
 		std::cout << "Dog is constructed" << std::endl;
 	this->type = "Dog";
+	this->brain = new Brain();
 }
 
 Dog::Dog(Dog const &original)
 {
+	this->brain = new Brain();
+	*this->brain = *original.brain;
 	if (PRINT)
 		std::cout << "Dog copy constructor used!" << std::endl;
 	this->type = original.type;
@@ -29,6 +32,7 @@ Dog &Dog::operator=(Dog const &original)
 
 Dog::~Dog()
 {
+	delete this->brain;
 	if (PRINT)
 		std::cout << "Dog is decomposed" << std::endl;
 }
@@ -36,6 +40,11 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
 	std::cout << this->type << ": woofs" << std::endl;
+}
+
+std::string Dog::getType() const
+{
+	return this->type;
 }
 
 void	Dog::setIdea(int n, const std::string new_idea)
