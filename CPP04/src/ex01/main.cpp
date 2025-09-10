@@ -157,10 +157,41 @@ int	main(void)
 	std::cout << "cat1 idea 0: " << cat1->getIdea(0) << std::endl;
 	std::cout << "cat2 idea 0: " << cat2->getIdea(0) << std::endl;
 
+
+	Dog *dog = new Dog();
+	dog->setIdea(0, "first idea");
+	std::cout << "created dog with address: " << dog << "and idea: " << dog->getIdea(0) << std::endl;
+
+	Dog *dog1 = new Dog(*dog);
+	std::cout << "changing idea 0 of dog to: Changed first idea" << std::endl;
+	dog->setIdea(0, "Changed first idea");
+	std::cout << "copy constructed dog1 from previous dog with address: " << dog1 << "\nand idea: " << dog1->getIdea(0) << "which should be different from changed dog idea0: " << dog->getIdea(0) << std::endl;
+	dog1->setIdea(1, "Whole new idea!");
+
+	Dog *dog2 = new Dog();
+	*dog2 = *dog1;
+	std::cout << "copy assigned dog from previous dog with address: " << dog2 << "\nand idea: " << dog->getIdea(0) << "\nand also another idea from previous dog: " << dog2->getIdea(1) << std::endl;
+
+	std::cout << "\n\nchecking idea 0 of all 3 dogs" << std::endl;
+	std::cout << "dog idea 0: " << dog->getIdea(0) << std::endl;
+	std::cout << "dog1 idea 0: " << dog1->getIdea(0) << std::endl;
+	std::cout << "dog2 idea 0: " << dog2->getIdea(0) << std::endl;
+	std::cout << "changing idea 0 of each dog to \"dog(n) idea\"" << std::endl;
+	dog->setIdea(0, "dog idea");
+	dog1->setIdea(0, "dog1 idea");
+	dog2->setIdea(0, "dog2 idea");
+	std::cout << "\n\nchecking idea 0 of all 3 dogs" << std::endl;
+	std::cout << "dog idea 0: " << dog->getIdea(0) << std::endl;
+	std::cout << "dog1 idea 0: " << dog1->getIdea(0) << std::endl;
+	std::cout << "dog2 idea 0: " << dog2->getIdea(0) << std::endl;
+
 	std::cout << "\n----Deleting objects at the end of the program----" << std::endl;
 	delete cat;
 	delete cat1;
 	delete cat2;
+	delete dog;
+	delete dog1;
+	delete dog2;
 	while (i < HERD_SIZE)
 	{
 		std::cout << "Slaughtering herd member nr: " << i << std::endl;

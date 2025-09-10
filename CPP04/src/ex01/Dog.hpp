@@ -5,12 +5,15 @@
 
 class Dog: public Animal
 {
+private:
+	Brain *brain;
+
 public:
 	Dog();
 	Dog(Dog const &original);
 	Dog &operator=(Dog const &original);
 	~Dog();
-	void makeSound(void) const;
+	void	makeSound(void) const;
 	void	setIdea(int n, const std::string new_idea);
 	const std::string getIdea(int n);
 };
