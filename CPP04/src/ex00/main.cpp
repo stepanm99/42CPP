@@ -12,23 +12,24 @@ int main(void)
 	Dog			dog;
 	WrongCat	wc;
 
-	std::cout << "Cat type: " << cat.getType() << std::endl;
-	std::cout << "Dog type: " << dog.getType() << std::endl;
-	std::cout << "Wrong cat type: " << wc.getType() << std::endl;
-	std::cout << "copymal type: " << copymal.getType() << std::endl;
+	std::cout << "\n\nCat type: " << cat.getType() << std::endl;
+	std::cout << "\n\nDog type: " << dog.getType() << std::endl;
+	std::cout << "\n\nWrong cat type: " << wc.getType() << std::endl;
+
+	std::cout << "\n\ncopymal type: " << copymal.getType() << std::endl;
 	std::cout << "copymal sound: " << std::endl;
 	copymal.makeSound();
 
 	copymal = dog;
-	std::cout << "copymal type: " << copymal.getType() << std::endl;
+	std::cout << "\n\ncopymal type: " << copymal.getType() << std::endl;
 	std::cout << "copymal sound: " << std::endl;
 	copymal.makeSound();
 
-	std::cout << "Cat sound: " << std::endl;
+	std::cout << "\n\nCat sound: " << std::endl;
 	cat.makeSound();
-	std::cout << "Dog sound: " << std::endl;
+	std::cout << "\n\nDog sound: " << std::endl;
 	dog.makeSound();
-	std::cout << "Wrong cat sound: " << std::endl;
+	std::cout << "\n\nWrong cat sound: " << std::endl;
 	wc.makeSound();
 
 	std::cout << "---End of tests on the stack---\n" << std::endl;
@@ -41,33 +42,41 @@ int main(void)
 	WrongAnimal* nwanimal = new WrongAnimal();
 	WrongAnimal* nwcat = new WrongCat();
 
-	std::cout << "ncopymal type: " << ncopymal->getType() << std::endl;
+	std::cout << "\n\nncopymal type: " << ncopymal->getType() << std::endl;
 	std::cout << "ncopymal sound: " << std::endl;
 	ncopymal->makeSound();
 
 	*ncopymal = *ncat;	//dereferencing pointers so operator= is used
 
-	std::cout << "ncopymal type: " << ncopymal->getType() << std::endl;
+	std::cout << "\n\nncopymal type: " << ncopymal->getType() << std::endl;
 	std::cout << "ncopymal sound: " << std::endl;
 	ncopymal->makeSound();
 
 	*ncopymal = *ndog;
 
-	std::cout << "ncopymal type: " << ncopymal->getType() << std::endl;
+	std::cout << "\n\nncopymal type: " << ncopymal->getType() << std::endl;
 	std::cout << "ncopymal sound: " << std::endl;
 	ncopymal->makeSound();
 
-	std::cout << "Animal type: " << nanimal->getType() << std::endl;
+	std::cout << "\n\nAnimal type: " << nanimal->getType() << std::endl;
 	std::cout << "Animal sound: " << std::endl;
 	nanimal->makeSound();
 
-	std::cout << "Cat type: " << ncat->getType() << std::endl;
+	std::cout << "\n\nCat type: " << ncat->getType() << std::endl;
 	std::cout << "Cat sound: " << std::endl;
 	ncat->makeSound();
 
-	std::cout << "Dog type: " << ndog->getType() << std::endl;
+	std::cout << "\n\nDog type: " << ndog->getType() << std::endl;
 	std::cout << "Dog sound: " << std::endl;
 	ndog->makeSound();
+
+	std::cout << "\n\nWrong animal type: " << nwanimal->getType() << std::endl;
+	std::cout << "Wrong animal sound: " << std::endl;
+	nwanimal->makeSound();
+
+	std::cout << "\n\nWrong cat type: " << nwcat->getType() << std::endl;
+	std::cout << "Wrong cat sound: " << std::endl;
+	nwcat->makeSound();
 	
 	delete nanimal;
 	delete ncat;

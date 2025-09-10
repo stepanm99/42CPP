@@ -2,13 +2,11 @@
 # define ANIMAL_HPP
 
 #include <string>
-#include "Brain.hpp"
 
 class Animal
 {
 protected:
 	std::string type;
-
 
 public:
 	Animal();
