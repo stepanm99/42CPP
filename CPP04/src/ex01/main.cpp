@@ -90,7 +90,6 @@ int	main(void)
 	Animal		*herd[HERD_SIZE];
 	int			i = 0;
 	int			j = 0;
-	std::string	test_idea = "test idea";
 
 	std::cout << "\n----Instantiating herd----\n" << std::endl;
 	while (i < HERD_SIZE)
@@ -101,7 +100,7 @@ int	main(void)
 			herd[i] = new Dog();
 			while (j < BRAIN_CAPACITY)
 			{
-				herd[i]->setIdea(j, test_idea);
+				dynamic_cast<Dog*>(herd[i])->setIdea(j, "test dog idea");
 				j++;
 			}
 			j = 0;
@@ -111,7 +110,7 @@ int	main(void)
 			herd[i] = new Cat();
 			while (j < BRAIN_CAPACITY)
 			{
-				herd[i]->setIdea(j, test_idea);
+				dynamic_cast<Cat*>(herd[i])->setIdea(j, "test cat idea");
 				j++;
 			}
 			j = 0;
@@ -120,29 +119,29 @@ int	main(void)
 	}
 
 	std::cout << "\n----Testing ideas----\n" << std::endl;
-	std::cout << "herd[0]->getIdea(0): " << herd[0]->getIdea(0) << std::endl;
-	std::cout << "herd[HERD_SIZE - 1]->getIdea(0): " << herd[HERD_SIZE - 1]->getIdea(0) << std::endl;
-	herd[0]->setIdea(0, "Some other idea");
-	std::cout << "herd[0]->getIdea(0): " << herd[0]->getIdea(0) << std::endl;
-	std::cout << "herd[0]->getIdea(BRAIN_CAPACITY): " << herd[0]->getIdea(BRAIN_CAPACITY) << std::endl;
-	std::cout << "herd[0]->getIdea(BRAIN_CAPACITY - 1): " << herd[0]->getIdea(BRAIN_CAPACITY - 1) << std::endl;
+	std::cout << "herd[0]->getIdea(0): " << dynamic_cast<Dog*>(herd[0])->getIdea(0) << std::endl;
+	std::cout << "herd[HERD_SIZE - 1]->getIdea(0): " << dynamic_cast<Cat*>(herd[HERD_SIZE - 1])->getIdea(0) << std::endl;
+	dynamic_cast<Dog*>(herd[0])->setIdea(0, "Some other idea");
+	std::cout << "herd[0]->getIdea(0): " << dynamic_cast<Dog*>(herd[0])->getIdea(0) << std::endl;
+	std::cout << "herd[0]->getIdea(BRAIN_CAPACITY): " << dynamic_cast<Dog*>(herd[0])->getIdea(BRAIN_CAPACITY) << std::endl;
+	std::cout << "herd[0]->getIdea(BRAIN_CAPACITY - 1): " << dynamic_cast<Dog*>(herd[0])->getIdea(BRAIN_CAPACITY - 1) << std::endl;
 	i = 0;
 
 	std::cout << "\n----Testing deep copy----\n" << std::endl;
 
 	Cat *cat = new Cat();
 	cat->setIdea(0, "first idea");
-	std::cout << "created cat with address: " << cat << "and idea: " << cat->getIdea(0) << std::endl;
+	std::cout << "\ncreated cat with address: " << cat << "and idea: " << cat->getIdea(0) << std::endl;
 
 	Cat *cat1 = new Cat(*cat);
 	std::cout << "changing idea 0 of cat to: Changed first idea" << std::endl;
 	cat->setIdea(0, "Changed first idea");
-	std::cout << "copy constructed cat1 from previous cat with address: " << cat1 << "\nand idea: " << cat->getIdea(0) << "which should be different from changed cat idea0: " << cat->getIdea(0) << std::endl;
+	std::cout << "\n\ncopy constructed cat1 from previous cat with address: " << cat1 << "\nand idea: " << cat->getIdea(0) << "which should be different from changed cat idea0: " << cat->getIdea(0) << std::endl;
 	cat1->setIdea(1, "Whole new idea!");
 
 	Cat *cat2 = new Cat();
 	*cat2 = *cat1;
-	std::cout << "copy assigned cat from previous cat with address: " << cat2 << "\nand idea: " << cat->getIdea(0) << "\nand also another idea from previous cat: " << cat2->getIdea(1) << std::endl;
+	std::cout << "\n\ncopy assigned cat from previous cat with address: " << cat2 << "\nand idea: " << cat->getIdea(0) << "\nand also another idea from previous cat: " << cat2->getIdea(1) << std::endl;
 
 	std::cout << "\n\nchecking idea 0 of all 3 cats" << std::endl;
 	std::cout << "cat idea 0: " << cat->getIdea(0) << std::endl;
@@ -160,17 +159,17 @@ int	main(void)
 
 	Dog *dog = new Dog();
 	dog->setIdea(0, "first idea");
-	std::cout << "created dog with address: " << dog << "and idea: " << dog->getIdea(0) << std::endl;
+	std::cout << "\n\ncreated dog with address: " << dog << "and idea: " << dog->getIdea(0) << std::endl;
 
 	Dog *dog1 = new Dog(*dog);
-	std::cout << "changing idea 0 of dog to: Changed first idea" << std::endl;
+	std::cout << "\n\nchanging idea 0 of dog to: Changed first idea" << std::endl;
 	dog->setIdea(0, "Changed first idea");
-	std::cout << "copy constructed dog1 from previous dog with address: " << dog1 << "\nand idea: " << dog1->getIdea(0) << "which should be different from changed dog idea0: " << dog->getIdea(0) << std::endl;
+	std::cout << "\n\ncopy constructed dog1 from previous dog with address: " << dog1 << "\nand idea: " << dog1->getIdea(0) << "which should be different from changed dog idea0: " << dog->getIdea(0) << std::endl;
 	dog1->setIdea(1, "Whole new idea!");
 
 	Dog *dog2 = new Dog();
 	*dog2 = *dog1;
-	std::cout << "copy assigned dog from previous dog with address: " << dog2 << "\nand idea: " << dog->getIdea(0) << "\nand also another idea from previous dog: " << dog2->getIdea(1) << std::endl;
+	std::cout << "\n\ncopy assigned dog from previous dog with address: " << dog2 << "\nand idea: " << dog->getIdea(0) << "\nand also another idea from previous dog: " << dog2->getIdea(1) << std::endl;
 
 	std::cout << "\n\nchecking idea 0 of all 3 dogs" << std::endl;
 	std::cout << "dog idea 0: " << dog->getIdea(0) << std::endl;
